@@ -7,7 +7,7 @@
 
  
 
-To write a C program to implement the Playfair Substitution technique.
+To write a python program to implement the Playfair Substitution technique.
 
 ## DESCRIPTION:
 
@@ -35,9 +35,57 @@ STEP-5: Display the obtained cipher text.
 
 
 Program:
+```
+a = [
+    [6, 24, 1],
+    [13, 16, 10],
+    [20, 17, 15]
+]
 
+b = [
+    [8, 5, 10],
+    [21, 8, 21],
+    [21, 12, 8]
+]
+
+msg = input("Enter plain text: ").upper()
+
+c = []
+for ch in msg[:3]:
+    c.append(ord(ch) - 65)
+    print(ord(ch) - 65, end=" ")
+
+d = [0, 0, 0]
+for i in range(3):
+    t = 0
+    for j in range(3):
+        t += a[i][j] * c[j]
+    d[i] = t % 26
+
+print("\nEncrypted Cipher Text :", end=" ")
+for i in range(3):
+    print(chr(d[i] + 65), end=" ")
+
+c = [0, 0, 0]
+for i in range(3):
+    t = 0
+    for j in range(3):
+        t += b[i][j] * d[j]
+    c[i] = t % 26
+
+print("\nDecrypted Cipher Text :", end=" ")
+for i in range(3):
+    print(chr(c[i] + 65), end=" ")
+```
 
 
 
 
 Output:
+
+<img width="917" height="479" alt="image" src="https://github.com/user-attachments/assets/f183c311-48b6-46d0-b137-cd5ba634f805" />
+
+
+
+RESULT:
+Thus, the Python program for the Playfair Substitution Cipher was successfully executed using a 5×5 key table. The plaintext was encrypted correctly according to the Playfair cipher rules.
